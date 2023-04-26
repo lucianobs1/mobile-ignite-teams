@@ -15,15 +15,15 @@ import { Container, Form, HeaderList, NumbersOfPlayers } from "./styles";
 export function Players() {
   const [team, setTeam] = useState("Time A");
   const [players, setPlayers] = useState([
-    // "Luciano",
-    // "Fernando",
-    // "João",
-    // "Paulo",
-    // "Gustavo",
-    // "Karina",
-    // "Ivan",
-    // "Barth",
-    // "Ana",
+    "Luciano",
+    "Fernando",
+    "João",
+    "Paulo",
+    "Gustavo",
+    "Karina",
+    "Ivan",
+    "Barth",
+    "Ana",
   ]);
 
   return (
