@@ -1,0 +1,50 @@
+### Glitch
+
+Estrategia para deixar mais fluida as navegações. Ao trocar de pagina se não
+utilizar alguma estrategia a tela irá piscar branco, se seu background
+for preto, o usuário irá perceber esse feito
+
+### Prop Drilling
+
+Imagine que sua aplicação tem 5 components e você precisa passar propriedades do component 1 para o 5. Então o componente 1 irá passar informação para o componente 2, o componente 2 para o 3, o componente 3 para o 4 e o componente 4 para o 5. Esse caminho, percurso todo é chamado de Prop Drilling.
+Observação essa pratica se torna difícil o gerenciamento se tiver muitos componentes, imagine se tivesse 16 componentes ? Seria bem trabalhoso esse processo. Porém para uso em poucos components não é uma pratica ruim.
+
+5 ==> Pai passa info pro filho ==> 4
+4 ==> Pai passa info pro filho ==> 3
+3 ==> Pai passa info pro filho ==> 2
+2 ==> Pai passa info pro filho ==> 1
+
+### Como evitar o Prop Drilling ?
+
+Como passar propriedades do componente 1 direto pro componente 5, sem que os componentes 2,3 e 4 recebam elas ?
+
+### Storage
+
+Uma solução é usar o STORAGE, armazenando os dados no Storage podemos recuperar
+uma informação em qualquer lugar da aplicação
+
+### Context Api
+
+Outra solução é no uso de contextAPI, com ela podemos armazenar uma informação em um estado e a tornar visível para toda ou qualquer lugar que desejarmos em nosso app.
+
+### JSON.stringify()
+
+Transforma um objeto em uma string
+
+user = {
+name: 'Luciano',
+age: '31'
+}
+
+"{ 'name: 'Luciano', 'age': '31' }"
+
+### JSON.Parse()
+
+Transforma uma string em um objeto
+
+"{ 'name: 'Luciano', 'age': '31' }"
+
+{
+name: 'Luciano',
+age: '31'
+}
