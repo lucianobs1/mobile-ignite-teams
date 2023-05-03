@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Alert, FlatList } from "react-native";
+import { useState, useEffect, useRef } from "react";
+import { Alert, FlatList, Keyboard, TextInput } from "react-native";
 import { useRoute } from "@react-navigation/native";
 
 import { Input } from "@components/Input";
@@ -15,8 +15,8 @@ import { playerAddByGroup } from "@storage/player/playerAddByGroup";
 import { playersGetByGroupAndTeam } from "@storage/player/playersGetByGroupAndTeam";
 
 import { AppError } from "@utils/AppError";
-import { Container, Form, HeaderList, NumbersOfPlayers } from "./styles";
 import { PlayerStorageDTO } from "@storage/player/PlayerStorageDTO";
+import { Container, Form, HeaderList, NumbersOfPlayers } from "./styles";
 
 type RouteParams = {
   group: string;
@@ -29,6 +29,8 @@ export function Players() {
 
   const route = useRoute();
   const { group } = route.params as RouteParams;
+
+  const newPlayerNameInputRef = useRef<TextInput>(null);
 
   async function handleAddPlayer() {
     if (newPlayerName.trim().length === 0) {
@@ -45,6 +47,11 @@ export function Players() {
 
     try {
       await playerAddByGroup(newPlayer, group);
+
+      newPlayerNameInputRef.current?.blur();
+      Keyboard.dismiss();
+
+      setNewPlayerName("");
       fetchPlayersByTeam();
     } catch (error) {
       if (error instanceof AppError) {
@@ -82,7 +89,9 @@ export function Players() {
 
       <Form>
         <Input
+          inputRef={newPlayerNameInputRef}
           onChangeText={setNewPlayerName}
+          value={newPlayerName}
           placeholder="Nome da pessoa"
           autoCorrect={false}
         />
