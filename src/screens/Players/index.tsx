@@ -80,7 +80,7 @@ export function Players() {
       console.log(error);
       Alert.alert(
         "Pessoas",
-        "Não foi possível carregar as pessoas do time selecionado"
+        "Não foi possível carregar as pessoas do turma selecionada"
       );
     }
   }
@@ -102,12 +102,12 @@ export function Players() {
       navigation.navigate("groups");
     } catch (error) {
       console.log(error);
-      Alert.alert("Remover grupo", "Não foi possível remover o grupo");
+      Alert.alert("Remover grupo", "Não foi possível remover a turma");
     }
   }
 
   async function handleGroupRemove() {
-    Alert.alert("Remover", "Deseja remover o grupo?", [
+    Alert.alert("Remover", "Deseja remover a turma?", [
       {
         text: "Não",
         style: "cancel",
